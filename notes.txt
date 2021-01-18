@@ -1,3 +1,6 @@
 Im Working on getting the dev branch up and running
 
+Hi there!
+
 Im adding more to this notes file to see how merging works.
+
