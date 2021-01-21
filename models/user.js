@@ -1,4 +1,4 @@
-//firstName, lastName, email, password, deleted, role
+//firstName, lastName, email, username, password, deleted, role
 var mongoose = require('mongoose');
 
 var groupieSchema = new mongoose.Schema({
