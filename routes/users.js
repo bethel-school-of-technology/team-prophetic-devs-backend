@@ -48,6 +48,7 @@ router.post('/login', async (req, res, next) => {
     if(groupie){
       let passwordMatch = passwordService.comparePasswords(req.body.password, groupie.password);
       if(passwordMatch){
+        console.log('User logged in!')
         let token = tokenService.assignToken(groupie);
         res.json({
           message: "Login was successful!",
