@@ -1,10 +1,9 @@
 var express = require('express');
 var path = require('path');
-var io = require('socket.io');
+var io = require('socket.io')(http);
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,7 +13,6 @@ var app = express();
 
 //Create HTTP server
 var server = http.createServer(app)
-
 
 //MONGO CONNECTION
 var connectionString = " mongodb://127.0.0.1/express-api";
