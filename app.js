@@ -1,6 +1,8 @@
 var express = require('express');
 var path = require('path');
-var io = require('socket.io')(http);
+var http = require('http')
+var routes = require('./routes/index');
+var io = require('socket.io');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
@@ -19,6 +21,7 @@ var connectionString = " mongodb://127.0.0.1/express-api";
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(){
     console.log('Database is connected :) Hows your day going?')
 });
+
 
 //Setup for Socket.io
 io = io(server);
