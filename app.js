@@ -34,8 +34,16 @@ app.use(function(req, res, next) {
     next();
 });
 io.on('connection', function(socket){
-    console.log('socket.io connection made');
+    console.log('socket.io connection made')
+    socket.on('chat message', (msg) => {
+        console.log('message: ' + msg);
+    });
 });
+io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    })
+})
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -48,6 +56,6 @@ app.use('/api/users', usersRouter);
 
 //Socket.io stuff
 app.use('/', routes);
-server.listen('3000');
+server.listen('4200');
 
 module.exports = app;
