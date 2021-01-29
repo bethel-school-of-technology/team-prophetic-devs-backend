@@ -3,13 +3,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var cors = require("cors")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // APP IS RUNNING AT PORT 5000
 var app = express();
-
+app.use(cors())
 
 //MONGO CONNECTION
 var connectionString = " mongodb://127.0.0.1/express-api";

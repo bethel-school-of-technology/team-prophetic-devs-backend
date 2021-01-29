@@ -19,6 +19,11 @@ var groupieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
     deleted: {
         type: Boolean,
         default: false

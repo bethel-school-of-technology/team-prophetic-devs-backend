@@ -14,6 +14,7 @@ router.post('/signup', async (req, res, next) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      username: req.body.username,
       password: passwordService.hashPassword(req.body.password)
     });
     //console.log(newGroupie)
@@ -86,6 +87,7 @@ router.get('/profile', async (req, res, next) => {
         firstName: currentGroupie.firstName,
         lastName: currentGroupie.lastName,
         email: currentGroupie.email,
+        username: currentGroupie.username,
         deleted: currentGroupie.deleted,
         admin: currentGroupie.admin
       }
