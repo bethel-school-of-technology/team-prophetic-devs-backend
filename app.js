@@ -6,12 +6,16 @@ var io = require('socket.io');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // APP IS RUNNING AT PORT 5000
 var app = express();
+
+//Fixes stupid cors >:( 
+app.use(cors());
 
 //Create HTTP server
 var server = http.createServer(app)
