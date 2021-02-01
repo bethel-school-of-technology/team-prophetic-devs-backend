@@ -9,7 +9,7 @@ var passwordService = require('../services/bouncer');
 // route for user registration (Add User) -> /register
 router.post('/signup', async (req, res, next) => {
   try{
-    //console.log(req.body);
+    console.log(req.body);
     let newGroupie = new Groupie({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
