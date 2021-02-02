@@ -4,22 +4,22 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var cors = require("cors");
-var socket = require("socket.io");
 const { Server } = require("http");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var socketRouter = require("./routes/socket");
 
-//Server listening to our frontend.
-let server = Server(app);
-
 // APP IS RUNNING AT PORT 5000
 var app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:4200"
+}));
 
-//Makes socket run on this server.
-var io = socket(server);
+//Socket things...
+//Listening to port 4200 which is our frontend location
+//var server = app.listen(3000);
+
 
 //MONGO CONNECTION
 var connectionString = " mongodb://127.0.0.1/express-api";

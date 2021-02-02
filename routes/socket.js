@@ -1,33 +1,45 @@
 module.exports = function (io) {
-  router.get("/chat", async (req, res, next) => {
-    console.log(req.headers);
-    let myToken = req.headers.authorization;
-    console.log(myToken);
-    if (myToken) {
-      let currentGroupie = await tokenService.verifyToken(myToken);
-      console.log(currentGroupie);
-      if (currentGroupie) {
-        io.on("connection", function (socket) {
-          console.log("made socket connection");
-          socket.on('chat message', (msg) => {
-              console.log('message: ' + msg);
-              io.emit('chat message', msg);
-          });
-          socket.on("disconnect", () => {
-            console.log("User disconnected");
-          });
-        });
-      } else {
-        res.json({
-          message: "Token is invalid or expired",
-          status: 403,
-        });
-      }
-    } else {
-      res.json({
-        message: "No token received",
-        status: 403,
+  router.get("/chat", (req, res, next) => {
+    io.on("connection", function (socket) {
+      console.log("made socket connection");
+      socket.on("chat message", (msg) => {
+        console.log("message: " + msg);
+        io.emit("chat message", msg);
       });
-    }
+      socket.on("disconnect", () => {
+        console.log("User disconnected");
+      });
+    });
   });
 };
+// router.get("/chat", async (req, res, next) => {
+//   console.log(req.headers);
+//   let myToken = req.headers.authorization;
+//   console.log(myToken);
+//   if (myToken) {
+//     let currentGroupie = await tokenService.verifyToken(myToken);
+//     console.log(currentGroupie);
+//     if (currentGroupie) {
+//       io.on("connection", function (socket) {
+//         console.log("made socket connection");
+//         socket.on('chat message', (msg) => {
+//             console.log('message: ' + msg);
+//             io.emit('chat message', msg);
+//         });
+//         socket.on("disconnect", () => {
+//           console.log("User disconnected");
+//         });
+//       });
+//     } else {
+//       res.json({
+//         message: "Token is invalid or expired",
+//         status: 403,
+//       });
+//     }
+//   } else {
+//     res.json({
+//       message: "No token received",
+//       status: 403,
+//     });
+//   }
+// });
