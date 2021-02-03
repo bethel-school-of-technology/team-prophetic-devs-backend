@@ -32,14 +32,11 @@ app.use(cors({
 
 
 //MONGO CONNECTION
-var connectionString = " mongodb://127.0.0.1/express-api";
-mongoose.connect(
-  connectionString,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  function () {
-    console.log("Database is connected :) Hows your day going?");
-  }
-);
+var connectionString="mongodb+srv://dbuser:Password1!@cluster0.xztln.mongodb.net/OpenMic?retryWrites=true&w=majority"
+// var connectionString = " mongodb://127.0.0.1/express-api";
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(){
+    console.log('Database is connected :) Hows your day going?')
+})
 
 app.use(logger("dev"));
 app.use(express.json());
