@@ -4,7 +4,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var cors = require("cors");
-const { Server } = require("http");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -13,10 +12,20 @@ var socketRouter = require("./routes/socket");
 // APP IS RUNNING AT PORT 5000
 var app = express();
 app.use(cors({
-  origin: "http://localhost:4200"
+  origin: "http://localhost:4200",
+  methods: ["GET", "PUT"],
+  transports: ['polling', 'websocket'],
 }));
 
-//Socket things...
+// //Socket things...
+// const server = require('http').createServer();
+// const io = require('socket.io')(server, {
+//   origin: 'http://localhost:4200'
+// });
+
+// io.on('connection', socket => { /* ... */ });
+
+// server.listen(3000);
 //Listening to port 4200 which is our frontend location
 //var server = app.listen(3000);
 
