@@ -41,17 +41,22 @@ let io = socket(server, {
 });
 //Listening for the connection event, and putting a message if connection happens.
 
-  // Connected Event
+// Connected Event
 io.on("connection", (socket) => {
-  console.log("A user has finally connected!");
-  socket.on("message", (data) => {
-    console.log("message: " + data);
-  });
+  console.log(`A user (${socket.id}) has finally connected!`);
+  socket.emit(
+    "test event",
+    "This is the backend talking...Ya did it my guy!!!"
+  );
+  socket.on("msg", (data)=>{
+    console.log(data);
+    socket.emit('msg', data);
+  })
 });
 
-io.on('connection', (socket) => {
-  socket.on('message', (msg) => {
-    io.emit('message', msg);
+io.on("connection", (socket) => {
+  socket.on("msg", (data) => {
+    io.emit('msg', data);
   });
 });
 
