@@ -1,14 +1,8 @@
 module.exports = function (io) {
-  router.get("/chat", (req, res, next) => {
-    io.on("connection", function (socket) {
-      console.log("made socket connection");
-      socket.on("chat message", (msg) => {
-        console.log("message: " + msg);
-        io.emit("chat message", msg);
-      });
-      socket.on("disconnect", () => {
-        console.log("User disconnected");
-      });
+  router.post("/chat", (req, res, next) => {
+    io.on("message", function (socket) {
+      socket.on('message', data);
+      console.log(data)
     });
   });
 };
