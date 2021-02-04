@@ -15,6 +15,8 @@ router.post('/signup', async (req, res, next) => {
       lastName: req.body.lastName,
       email: req.body.email,
       username: req.body.username,
+      cityState: req.body.cityState,
+      instruments: req.body.cityState,
       password: passwordService.hashPassword(req.body.password)
     });
     //console.log(newGroupie)
@@ -88,6 +90,8 @@ router.get('/profile', async (req, res, next) => {
         lastName: currentGroupie.lastName,
         email: currentGroupie.email,
         username: currentGroupie.username,
+        cityState: currentGroupie.cityState,
+        instruments: currentGroupie.instruments,
         deleted: currentGroupie.deleted,
         admin: currentGroupie.admin
       }
