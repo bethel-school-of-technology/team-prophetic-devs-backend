@@ -16,7 +16,7 @@ router.post('/signup', async (req, res, next) => {
       email: req.body.email,
       username: req.body.username,
       cityState: req.body.cityState,
-      instruments: req.body.cityState,
+      instruments: req.body.instruments,
       password: passwordService.hashPassword(req.body.password)
     });
     //console.log(newGroupie)
