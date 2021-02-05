@@ -13,7 +13,7 @@ var socketRouter = require("./routes/socket");
 var app = express();
 app.use(cors({
   origin: "http://localhost:4200",
-  methods: ["GET", "PUT"],
+  methods: ["GET", "PUT", "POST"],
   transports: ['polling', 'websocket'],
 }));
 
