@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http').Server(express)
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -9,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // APP IS RUNNING AT PORT 5000
+var port = 5000;
 var app = express();
 app.use(cors())
 
@@ -27,5 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
+
+http.listen(port, console.log('server is running now on port: ', port)).on('error', function(err) {
+    console.log('server start error', err);
+})
 
 module.exports = app;

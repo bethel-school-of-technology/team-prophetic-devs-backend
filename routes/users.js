@@ -73,7 +73,7 @@ router.post('/login', async (req, res, next) => {
   })
 })
 
-//route to get user profile iformation -> /profile
+//route to get user profile information -> /profile
 router.get('/profile', async (req, res, next) => {
   console.log(req.headers);
   let myToken = req.headers.authorization;
