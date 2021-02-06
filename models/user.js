@@ -24,6 +24,14 @@ var groupieSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    cityState: {
+        type: String,
+        required: false,
+    },
+    instruments: {
+        type: String,
+        required: false,
+    },
     deleted: {
         type: Boolean,
         default: false
