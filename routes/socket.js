@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/getUser', async (req, res, next) => {
+router.get('/getUserName', async (req, res, next) => {
   console.log(req.headers);
   let myToken = req.headers.authorization;
   console.log(myToken);
