@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var Groupie = require('../models/user');
+
+var tokenService = require('../services/bodygaurd');
 
 router.get('/getUserName', async (req, res, next) => {
   console.log(req.headers);
