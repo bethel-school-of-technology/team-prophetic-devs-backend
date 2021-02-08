@@ -26,11 +26,15 @@ var groupieSchema = new mongoose.Schema({
     },
     cityState: {
         type: String,
-        required: false,
+        required: false
     },
     instruments: {
         type: String,
-        required: false,
+        required: false
+    },
+    genres:{
+        type: String,
+        required: false
     },
     deleted: {
         type: Boolean,
