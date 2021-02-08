@@ -17,6 +17,7 @@ router.post('/signup', async (req, res, next) => {
       username: req.body.username,
       cityState: req.body.cityState,
       instruments: req.body.instruments,
+      genres: req.body.genres,
       password: passwordService.hashPassword(req.body.password)
     });
     //console.log(newGroupie)
@@ -92,6 +93,7 @@ router.get('/profile', async (req, res, next) => {
         username: currentGroupie.username,
         cityState: currentGroupie.cityState,
         instruments: currentGroupie.instruments,
+        genres: currentGroupie.genres,
         deleted: currentGroupie.deleted,
         admin: currentGroupie.admin
       }
