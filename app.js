@@ -8,6 +8,7 @@ var cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var socketRouter = require("./routes/socket");
+var postsRouter = require("./routes/posts");
 
 // APP IS RUNNING AT PORT 5000
 var app = express();
@@ -47,5 +48,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/socket", socketRouter);
+app.use("/api/posts", postsRouter);
 
 module.exports = app;
