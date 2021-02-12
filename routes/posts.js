@@ -34,17 +34,23 @@ router.post("/createPost", async (req, res, next) => {
   }
 });
 
-router.get("/getPost", async (req, res, next) => {
-  find((err, res) => {
-    if (res) {
-      res.json(res);
+router.get("/getPosts", async (req, res, next) => {
+  let myToken = req.headers.authorization;
+  if(myToken){
+    let currentGroupie = await tokenService.verifyToken(myToken);
+    console.log(currentGroupie);
+    if(currentGroupie){
+    Post.find({}, (err, result) => {
+      console.log("Post Find all response:***" +res+"***");
+      if (err){
+        console.log(err);
+      } else {
+        res.json(result);
+      }
+    });
+
     }
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Don't know whats happening.");
-    }
-  });
+  }
 });
 
 module.exports = router;
