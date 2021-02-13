@@ -13,6 +13,7 @@ router.post("/createPost", async (req, res, next) => {
       try {
         console.log(req.body);
         let newPost = new Post({
+          name: currentGroupie.firstName + " " + currentGroupie.lastName,
           createdBy: currentGroupie.email,
           title: req.body.title,
           postBody: req.body.postBody,
