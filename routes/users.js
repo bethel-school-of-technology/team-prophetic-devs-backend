@@ -85,6 +85,7 @@ router.get('/profile', async (req, res, next) => {
   if(myToken){
     let currentGroupie = await tokenService.verifyToken(myToken);
     console.log(currentGroupie);
+    
     if(currentGroupie){
       let responseGroupie = {
         firstName: currentGroupie.firstName,
