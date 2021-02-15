@@ -9,6 +9,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var socketRouter = require("./routes/socket");
 var postsRouter = require("./routes/posts");
+var eventsRouter = require("./routes/events");
 
 // APP IS RUNNING AT PORT 5000
 var app = express();
@@ -49,5 +50,6 @@ app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/socket", socketRouter);
 app.use("/api/posts", postsRouter);
+app.use("/api/events", eventsRouter);
 
 module.exports = app;
