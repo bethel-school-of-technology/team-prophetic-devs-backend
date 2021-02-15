@@ -14,7 +14,7 @@ var eventsRouter = require("./routes/events");
 // APP IS RUNNING AT PORT 5000
 var app = express();
 app.use(cors({
-  origin: "http://localhost:4200",
+  origin: "https://boring-nightingale-93b5c6.netlify.app",
   methods: ["GET", "PUT", "POST"],
   transports: ['polling', 'websocket'],
 }));

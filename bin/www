@@ -33,7 +33,7 @@ server.on("listening", onListening);
 let io = socket(server, {
   cors: {
     path: "/socket.io",
-    origin: "http://localhost:4200",
+    origin: "https://boring-nightingale-93b5c6.netlify.app",
     methods: ["GET", "POST"],
     credentials: true,
     transports: ["websocket", "polling"],
