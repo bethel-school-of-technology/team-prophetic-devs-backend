@@ -41,14 +41,21 @@ router.get("/getPosts", async (req, res, next) => {
     let currentGroupie = await tokenService.verifyToken(myToken);
     console.log(currentGroupie);
     if(currentGroupie){
-    Post.find({}, (err, result) => {
-      console.log("Post Find all response:***" +res+"***");
-      if (err){
-        console.log(err);
-      } else {
-        res.json(result);
-      }
-    });
+      Post.find({}).sort({createdDate:"desc"}).exec(function(err, result){
+        if (err){
+              console.log(err);
+            } else {
+              res.json(result);
+            }
+      })
+    // Post.find({}, (err, result) => {
+    //   console.log("Post Find all response:***" +res+"***");
+    //   if (err){
+    //     console.log(err);
+    //   } else {
+    //     res.json(result);
+    //   }
+    // });
 
     }
   }
